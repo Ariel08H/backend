@@ -136,7 +136,9 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// update
+// update TEMPORARY VERSION
+// This version allows updating any event by ID.
+// Use it only to fix the teacher's events, then restore the user_email protection.
 router.put('/update/:id', async (req, res) => {
     console.log("✏️ Got update request for event ID:", req.params.id);
 
@@ -167,7 +169,6 @@ router.put('/update/:id', async (req, res) => {
                 "location" = ${sqlValue(location)},
                 "author" = ${sqlValue(author)}
             WHERE id = ${sqlValue(id)}
-            AND "user_email" = ${sqlValue(user_email)}
             RETURNING *, "date" AS last_date
         `;
 
