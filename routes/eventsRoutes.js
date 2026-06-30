@@ -169,6 +169,7 @@ router.put('/update/:id', async (req, res) => {
                 "location" = ${sqlValue(location)},
                 "author" = ${sqlValue(author)}
             WHERE id = ${sqlValue(id)}
+            AND "user_email" = ${sqlValue(user_email)}
             RETURNING *, "date" AS last_date
         `;
 
